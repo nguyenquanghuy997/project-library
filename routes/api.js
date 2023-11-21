@@ -13,11 +13,11 @@ const Book = require("../models").Book;
 module.exports = function (app) {
   app
     .route("/api/books")
-    .get(async (req, res) => {
+    .get(function (req, res) {
       //response will be array of book objects
       //json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
       try {
-        const books = await Book.find({});
+        const books = Book.find({});
         if (!books) {
           res.json([]);
           return;
